@@ -1,0 +1,42 @@
+version: '3.1'
+name: atomicloops-dev
+services:
+  
+  db:
+    image: postgres:14
+    # container_name: users-db
+    restart: always
+    user: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
+    volumes:
+      - users-db:/var/lib/postgresql/data
+
+  pgadmin:
+    container_name: users-admin-1
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
+    volumes:
+      - users-admin-1:/var/lib/pgadmin
+  
+  redis:
+    container_name: users-redis
+    image: redis
+    expose:
+      - 6379
+
+volumes:
+  users-db: 
+  users-admin-1:
