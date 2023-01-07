@@ -145,7 +145,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
     'DEFAULT_FILTER_BACKENDS': [
-        'django_filters.filters.OrderingFilter'
+        'django_filters.rest_framework.DjangoFilterBackend',
     ],
 
 
@@ -157,10 +157,21 @@ REST_FRAMEWORK = {
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://redis:6379/1",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        # "LOCATION": [
+        #     "redis://127.0.0.1:6379/1",
+        #     # "redis://127.0.0.1:6379/2",
+        #     # "redis://127.0.0.1:6379/3",
+        #     # "redis://127.0.0.1:6379/4",
+            
+        #     ],
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient"
         },
         "KEY_PREFIX": "example"
     }
 }
+
+
+# TIMEOUT for REDIS 5 minutes
+CACHE_TTL = 60 * 5

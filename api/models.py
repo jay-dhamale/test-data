@@ -19,4 +19,7 @@ class User(models.Model):
     class Meta:
         verbose_name = "User"
         verbose_name_plural = "Users"
+        indexes = [models.Index(fields=['id', 'username', 'first_name', 'last_name'])]
+        # ordering = ['-first_name']
+
      

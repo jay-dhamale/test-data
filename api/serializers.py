@@ -7,3 +7,6 @@ class UserSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
         # read_only_fields = ('password',)
+
+    # def to_representation(self, instance):
+    #     return super().to_representation(instance)
