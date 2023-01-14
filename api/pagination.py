@@ -8,10 +8,10 @@ class AtomicPageNumberPagination(PageNumberPagination):
     page_size_query_param = "limit"
 
     def get_paginated_response(self, data):
-        print(self.page.paginator.count)
-        print(self.page_size_query_param)
-        print(self.page_size)
-        print(self.get_page_size(self.request))
+        # print(self.page.paginator.count)
+        # print(self.page_size_query_param)
+        # print(self.page_size)
+        # print(self.get_page_size(self.request))
         return Response(OrderedDict([
             ('total', self.page.paginator.count//self.get_page_size(self.request)),
             ('count', self.page.paginator.count),
